@@ -16,6 +16,7 @@ class LapakNgoding(MDApp):
 		screens =[
 			Hallog(name="hallog"),
 			Daftar(name="daftar"),
+			Hallogadmin(name="hallogadmin"),
 		]
 		for screen in screens:
 			self.wm.add_widget(screen)
