@@ -1,0 +1,98 @@
+#:kivy 2.1 
+<Daftar>:
+    MDFloatLayout:
+        md_bg_color: ("#d3ede6")
+    Image:
+        source:"kv/assets/foto/lapakngodingtr.png"
+        size_hint: .5 , .5
+        pos_hint:{"center_x": 0.5,"center_y": 0.92}
+    Image:
+        source:"kv/assets/foto/logoLapakngodin9.png"
+        size_hint: .15 , .15
+        pos_hint:{"center_x": 0.5,"center_y": 0.92}
+    MDLabel:
+        text: "L a p a k  N g o d i n g"
+        halign : "center"
+        font_size : "24sp"
+        font_name : "Atma"
+        pos_hint:{"center_y": 0.84}
+    MDLabel:
+        text: "Belajar Ngoding dengan Browsing"
+        halign : "center"
+        font_size : "14sp"
+        font_name : "Tagline"
+        pos_hint:{"center_y": 0.81}
+        color:("#808080")
+    MDLabel:
+        text: "Daftar Member Lapak Ngoding"
+        halign : "center"
+        font_size : "16sp"
+        font_name : "Atma"
+        pos_hint:{"center_y": 0.78}
+        color:("#808080")
+    MDTextField:
+        id: username
+        hint_text: "Username"
+        mode: "rectangle"
+        icon_left: "account"
+        size_hint: 0.70, 0.09
+        pos_hint:{"center_x": 0.5,"center_y": 0.73}
+    MDTextField:
+        id: nama
+        hint_text: "Nama Lengkap"
+        mode: "rectangle"
+        icon_left: "account"
+        size_hint: 0.70, 0.09
+        pos_hint:{"center_x": 0.5,"center_y": 0.63}
+    MDTextField:
+        id: email
+        hint_text: "Email aktif"
+        mode:"rectangle"
+        icon_left: "email-check-outline"
+        size_hint: 0.70, 0.09
+        pos_hint:{"center_x": 0.5, "center_y": 0.53}
+    MDTextField:
+        id: nohp
+        hint_text: "No HP Aktif"
+        mode:"rectangle"
+        icon_left: "cellphone-basic"
+        size_hint: 0.70, 0.09
+        pos_hint:{"center_x": 0.5, "center_y": 0.43}
+    MDTextField:
+        id: alamat
+        hint_text: "Alamat Lengkap"
+        mode:"rectangle"
+        icon_left: "city-variant"
+        size_hint: 0.70, 0.09
+        pos_hint:{"center_x": 0.5, "center_y": 0.33}
+    MDTextField:
+        id: password
+        password: True
+        hint_text: "Password min 8"
+        mode:"rectangle"
+        icon_left: "key-variant"
+        size_hint: 0.35, 0.09
+        pos_hint:{"center_x": 0.32, "center_y": 0.23}
+    MDTextField:
+        id: passconf
+        password: True
+        hint_text: "Konfirmasi"
+        mode:"rectangle"
+        icon_left: "key-variant"
+        size_hint: 0.35, 0.09
+        pos_hint:{"center_x": 0.68, "center_y": 0.23}
+    MDRaisedButton:
+        text:"D a f t a r"
+        font_size : "16sp"
+        font_name : "Atma"
+        size_hint: 0.30, 0.02
+        pos_hint: {"center_x": 0.32, "center_y": 0.13}
+        md_bg_color: ("#23a484")
+        on_press : root.submit()
+    MDLabel:
+        text: "Sudah Punya Akun?"
+        halign : "center"
+        font_size : "16sp"
+        font_name : "Line"
+        pos_hint:{"center_x": 0.68,"center_y": 0.13}
+        color:("#000000")

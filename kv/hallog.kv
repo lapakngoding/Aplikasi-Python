@@ -1,0 +1,88 @@
+#:kivy 2.1
+<Hallog>:
+    MDFloatLayout:
+        md_bg_color: ("#d3ede6")
+    Image:
+        source:"kv/assets/foto/lapakngodingtr.png"
+        size_hint: .5 , .5
+        pos_hint:{"center_x": 0.5,"center_y": 0.70}
+    Image:
+        source:"kv/assets/foto/logoLapakngodin9.png"
+        size_hint: .2 , .2
+        pos_hint:{"center_x": 0.5,"center_y": 0.85}
+    MDLabel:
+        text: "L a p a k  N g o d i n g"
+        halign : "center"
+        font_size : "30sp"
+        font_name : "Atma"
+        pos_hint:{"center_y": 0.71}
+    MDLabel:
+        text: "Belajar Ngoding dengan Browsing"
+        halign : "center"
+        font_size : "16sp"
+        font_name : "Tagline"
+        pos_hint:{"center_y": 0.65}
+        color:("#808080")
+    MDTextField:
+        id: username
+        hint_text: "Username"
+        mode: "rectangle"
+        icon_left: "account"
+        size_hint: 0.70, 0.10
+        pos_hint:{"center_x": 0.5,"center_y": 0.58}
+    MDTextField:
+        id: password
+        password: True
+        hint_text: "Password"
+        mode:"rectangle"
+        icon_left: "key-variant"
+        size_hint: 0.70, 0.10
+        pos_hint:{"center_x": 0.5, "center_y": 0.47}
+    MDRaisedButton:
+        text:"L o g i n"
+        font_size : "16sp"
+        font_name : "Atma"
+        size_hint: 0.30, 0.02
+        pos_hint: {"center_x": 0.32, "center_y": 0.37}
+        md_bg_color: ("#23a484")
+        on_press : root.loginAcc()
+    MDRaisedButton:
+        text:"D a f t a r"
+        font_size : "16sp"
+        font_name : "Atma"
+        size_hint: 0.30, 0.02
+        pos_hint: {"center_x": 0.68, "center_y": 0.37}
+        md_bg_color: ("#23a484")
+        on_release :
+            root.manager.current = "daftar"
+    MDRaisedButton:
+        text:"Login Administrator"
+        font_size : "16sp"
+        font_name : "Atma"
+        size_hint: 0.66, 0.02
+        text_color:("#00000")
+        pos_hint: {"center_x": 0.5,"center_y": 0.29}
+        md_bg_color: ("#a42343")
+    MDRaisedButton:
+        text:"Login dengan Google"
+        font_size : "16sp"
+        font_name : "Atma"
+        size_hint: 0.66, 0.02
+        text_color:("#00000")
+        pos_hint: {"center_x": 0.5,"center_y": 0.20}
+        md_bg_color: ("#23f2eb")
+    MDRaisedButton:
+        text:"Login dengan Facebook"
+        font_size : "16sp"
+        font_name : "Atma"
+        size_hint: 0.66, 0.02
+        text_color:("#00000")
+        pos_hint: {"center_x": 0.5,"center_y": 0.12}
+        md_bg_color: ("#38b6ff")
+    MDLabel:
+        text: "Lupa Password?"
+        halign : "center"
+        font_size : "16sp"
+        font_name : "Line"
+        pos_hint:{"center_y": 0.06}
+        color:("#000000")
