@@ -63,6 +63,8 @@
         text_color:("#00000")
         pos_hint: {"center_x": 0.5,"center_y": 0.29}
         md_bg_color: ("#a42343")
+        on_release :
+            root.manager.current = "hallogadmin"
     MDRaisedButton:
         text:"Login dengan Google"
         font_size : "16sp"
