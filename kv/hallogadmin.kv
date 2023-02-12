@@ -1,5 +1,5 @@
 #:kivy 2.1
-<Hallog>:
+<Hallogadmin>:
     MDFloatLayout:
         md_bg_color: ("#d3ede6")
     Image:
@@ -39,43 +39,28 @@
         size_hint: 0.70, 0.10
         pos_hint:{"center_x": 0.5, "center_y": 0.47}
     MDRaisedButton:
-        text:"L o g i n"
+        text:"Login Administrator"
         font_size : "16sp"
         font_name : "Atma"
-        size_hint: 0.30, 0.02
-        pos_hint: {"center_x": 0.32, "center_y": 0.37}
-        md_bg_color: ("#23a484")
-        on_press : root.loginAcc()
+        size_hint: 0.66, 0.02
+        text_color:("#00000")
+        pos_hint: {"center_x": 0.5,"center_y": 0.36}
+        md_bg_color: ("#a42343")
+        on_release :
+            root.manager.current = "hallogadmin"
     MDRaisedButton:
-        text:"D a f t a r"
+        text:"Login Member"
         font_size : "16sp"
         font_name : "Atma"
-        size_hint: 0.30, 0.02
-        pos_hint: {"center_x": 0.68, "center_y": 0.37}
+        size_hint: 0.66, 0.02
+        pos_hint: {"center_x": 0.5, "center_y": 0.27}
         md_bg_color: ("#23a484")
         on_release :
-            root.manager.current = "daftar"
-
-    MDRaisedButton:
-        text:"Login dengan Google"
-        font_size : "16sp"
-        font_name : "Atma"
-        size_hint: 0.66, 0.02
-        text_color:("#00000")
-        pos_hint: {"center_x": 0.5,"center_y": 0.28}
-        md_bg_color: ("#23f2eb")
-    MDRaisedButton:
-        text:"Login dengan Facebook"
-        font_size : "16sp"
-        font_name : "Atma"
-        size_hint: 0.66, 0.02
-        text_color:("#00000")
-        pos_hint: {"center_x": 0.5,"center_y": 0.19}
-        md_bg_color: ("#38b6ff")
+            root.manager.current = "hallog"
     MDLabel:
         text: "Lupa Password?"
         halign : "center"
         font_size : "16sp"
         font_name : "Line"
-        pos_hint:{"center_y": 0.10}
+        pos_hint:{"center_y": 0.17}
         color:("#000000")
