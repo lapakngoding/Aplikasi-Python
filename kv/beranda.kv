@@ -1,0 +1,52 @@
+#:kivy 2.1
+
+<Beranda, Hallogadmin>:
+
+    MDFloatLayout:
+        md_bg_color: ("#d3ede6")
+        
+    Image:
+        source:"kv/assets/foto/lapakngodingtr.png"
+        size_hint: .5 , .5
+        pos_hint:{"center_x": 0.70,"center_y": 0.87}
+    Image:
+        source:"kv/assets/foto/logoLapakngodin9.png"
+        size_hint: .2 , .2
+        pos_hint:{"center_x": 0.13,"center_y": 0.90}
+    MDLabel:
+        text: "L a p a k  N g o d i n g"
+        halign : "center"
+        font_size : "30sp"
+        font_name : "Atma"
+        pos_hint:{"center_x": 0.60, "center_y": 0.95}
+    MDLabel:
+        text: "Belajar Ngoding dengan Browsing"
+        halign : "center"
+        font_size : "16sp"
+        font_name : "Tagline"
+        pos_hint:{"center_x": 0.60, "center_y": 0.90}
+        color:("#808080")
+    MDLabel:
+        id: message_label
+        text: ''
+        halign : "center"
+        font_size : "18sp"
+        font_name : "Tagline"
+        pos_hint:{"center_x": 0.45, "center_y": 0.86}
+        color:("#808080")
+    
+
+    #MDTopAppBar:
+        #icon: "home-circle"
+        #type: "bottom"
+        #left_action_items: [["account-cog", lambda x: x]]
+        #icon_color: ("#23a484")
+
+    MDTopAppBar:
+        #title: "LapakNgoding"
+        md_bg_color: ("#23a484")
+        use_overflow: True
+        left_action_items:
+            [["home", lambda x: app.callback(x), "Home", "Home"]]
+        right_action_items:
+            [["logout", lambda x: app.logout(), "Logout", "Logout"]]
