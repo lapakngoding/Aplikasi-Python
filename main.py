@@ -17,10 +17,15 @@ class LapakNgoding(MDApp):
 			Hallog(name="hallog"),
 			Daftar(name="daftar"),
 			Hallogadmin(name="hallogadmin"),
+			Beranda(name='admin'),
 		]
 		for screen in screens:
 			self.wm.add_widget(screen)
 		return self.wm
+	
+	def logout(self):
+		self.wm.current = "hallog"
+
 if __name__ == '__main__':
 	LabelBase.register(name="Atma", fn_regular="kv/assets/fonts/Atma-Bold.ttf")
 	LabelBase.register(name="Tagline", fn_regular="kv/assets/fonts/Ubuntu-LI.ttf")
