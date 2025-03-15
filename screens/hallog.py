@@ -4,6 +4,7 @@ from kivy.lang import Builder
 from kivymd.uix.dialog import MDDialog
 import sqlite3
 import bcrypt
+from kivymd.uix.screenmanager import MDScreenManager
 
 class Hallog(MDScreen):
     pass
@@ -40,6 +41,10 @@ class Hallog(MDScreen):
                             if  bcrypt.checkpw(password.encode(), user):
                                 print("Berhasil login!")
                                 print("Hi", username)
+
+
+                                # Pindah ke halaman Admin
+                                self.manager.current = 'admin'
                                 
                             else:
                                 print()
@@ -83,3 +88,5 @@ class Hallog(MDScreen):
                 radius=[20, 7, 20, 7],
                 )
             self.dialog.open()
+
+    
