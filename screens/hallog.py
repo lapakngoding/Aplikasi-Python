@@ -1,92 +1,73 @@
-from kivymd.app import MDApp
 from kivymd.uix.screen import MDScreen
 from kivy.lang import Builder
 from kivymd.uix.dialog import MDDialog
+from kivymd.app import MDApp
 import sqlite3
 import bcrypt
-from kivymd.uix.screenmanager import MDScreenManager
+import os
+
+# Buat path database dinamis
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, '..', 'LapakNgoding.db')
+
+from kivymd.app import MDApp  # ⬅ WAJIB agar MDApp bisa diakses
 
 class Hallog(MDScreen):
-    pass
-
     def __init__(self, **kwargs):
         Builder.load_file("kv/hallog.kv")
         super().__init__(**kwargs)
 
     def loginAcc(self):
-        username = self.ids.username.text
-        password = self.ids.password.text
+        username = self.ids.username.text.strip()
+        password = self.ids.password.text.strip()
 
-        if not len(username or password) < 1:
-            if True:
-                conn = sqlite3.connect('/home/zahir/LapakNgoding.db')
-                c = conn.cursor()
-                c.execute("SELECT * FROM MEMBER")
+        if not username or not password:
+            self.dialog = MDDialog(
+                text="Username dan Password tidak boleh kosong!",
+                radius=[20, 7, 20, 7],
+            )
+            self.dialog.open()
+            return
 
-                db = c.fetchall()
-                l = []
-                n = []
-                for user in db:
-                    a = (user[1])
-                    z = (user[6])
-                    l.append(a)
-                    n.append(z)
-                    userdata = dict(zip(l, n))
-                    #userdata = (l,n)
-                try:
-                    if username in userdata:
-                        user = userdata[username]
+        try:
+            # Ambil data dari database
+            conn = sqlite3.connect(DB_PATH)
+            c = conn.cursor()
+            c.execute("SELECT username, password FROM member")
+            db = c.fetchall()
+            conn.close()
 
-                        try:
-                            if  bcrypt.checkpw(password.encode(), user):
-                                print("Berhasil login!")
-                                print("Hi", username)
+            # Buat dict username -> password
+            userdata = {uname: pwd for uname, pwd in db}
 
+            if username in userdata:
+                hashed_pw = userdata[username]
 
-                                # Pindah ke halaman Admin
-                                self.manager.current = 'admin'
-                                
-                            else:
-                                print()
-                                self.dialog = MDDialog(
-                                    text = "Password salah!.untuk mengulangi klik di luar box",
-                                    radius=[20, 7, 20, 7],
-                                    )
-                                self.dialog.open()
-                        except:
-                            print()
-                            self.dialog = MDDialog(
-                                text = "Mohon password dan username periksa kembali!.untuk mengulangi klik di luar box",
-                                radius=[20, 7, 20, 7],
-                                )
-                            self.dialog.open()
-                    else:
-                        print()
-                        self.dialog = MDDialog(
-                            text = "Maaf username tidak terdaftar!.untuk mengulangi klik di luar box",
-                            radius=[20, 7, 20, 7],
-                            )
-                        self.dialog.open()
-                except:
-                    print()
+                # Konversi ke bytes jika perlu
+                if isinstance(hashed_pw, str):
+                    hashed_pw = hashed_pw.encode('utf-8')
+
+                # Validasi password
+                if bcrypt.checkpw(password.encode(), hashed_pw):
+                    print(f"✅ Login berhasil untuk: {username}")
+                    MDApp.get_running_app().logged_user = username
+                    self.manager.current = 'beranda'
+                else:
                     self.dialog = MDDialog(
-                        text = "Password atau username belum terdaftar!.untuk mengulangi klik di luar box",
+                        text="❌ Password salah! Coba lagi.",
                         radius=[20, 7, 20, 7],
-                        )
+                    )
                     self.dialog.open()
             else:
-                print()
                 self.dialog = MDDialog(
-                    text = "Gagal login!.untuk mengulangi klik di luar box",
+                    text="❌ Username tidak ditemukan.",
                     radius=[20, 7, 20, 7],
-                    )
-                self.dialog.open()
-        else:
-            print()
-            self.dialog = MDDialog(
-                text = "Password dan username tidak boleh kosong!.untuk mengulangi klik di luar box",
-                radius=[20, 7, 20, 7],
                 )
+                self.dialog.open()
+        except Exception as e:
+            print("🔥 Error saat login:", e)
+            self.dialog = MDDialog(
+                text="Terjadi kesalahan saat login. Periksa koneksi atau database.",
+                radius=[20, 7, 20, 7],
+            )
             self.dialog.open()
-
-    
