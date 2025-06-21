@@ -12,12 +12,14 @@ class WindowManager(ScreenManager):
 
 class LapakNgoding(MDApp):
 	def build(self):
+		self.logged_user = None
+		
 		self.wm = WindowManager()
 		screens =[
 			Hallog(name="hallog"),
 			Daftar(name="daftar"),
 			Hallogadmin(name="hallogadmin"),
-			Beranda(name='admin'),
+			Beranda(name='beranda'),
 		]
 		for screen in screens:
 			self.wm.add_widget(screen)
